@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fsociety - Anti-Scam Matrix</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="matrix-box">
+        <h1>fsociety</h1>
+        <div class="glitch-404">SYS_STATUS: ERROR_404_SCAMMER_FOUND</div>
+
+        <!-- ÉCRAN 1 : SAISIE DE L'EMAIL UTILISATEUR -->
+        <div id="screen1" class="screen active">
+            <div class="input-group">
+                <label for="userEmail">> INIT_SESSION : ENTRER VOTRE EMAIL (Pour recevoir la réponse du Support) :</label>
+                <input type="email" id="userEmail" placeholder="Ex: anonymouscid0@gmail.com" autocomplete="off">
+            </div>
+            <button class="btn-cyber" onclick="passerEcran2()">SUIVANT ></button>
+        </div>
+
+        <!-- ÉCRAN 2 : ÉDITION MANUELLE DES 3 MESSAGES PAR L'UTILISATEUR -->
+        <div id="screen2" class="screen">
+            <div style="margin-bottom: 25px; color: #ff0033; font-weight: bold; font-size: 0.85rem;">
+                [!] AJOUTEZ LE NUMÉRO DE L'ARNAQUEUR MANUELLEMENT DANS CHAQUE MESSAGE :
+            </div>
+
+            <!-- Message 1 -->
+            <div class="input-group">
+                <label style="color:#00ff33;">[MESSAGE 1 - SUPPORT GÉNÉRAL]</label>
+                <textarea id="textMessage1" rows="6"></textarea>
+            </div>
+
+            <!-- Message 2 -->
+            <div class="input-group">
+                <label style="color:#00ff33;">[MESSAGE 2 - SUPPORT SMB]</label>
+                <textarea id="textMessage2" rows="6"></textarea>
+            </div>
+
+            <!-- Message 3 -->
+            <div class="input-group">
+                <label style="color:#25D366;">[MESSAGE 3 - ASSISTANCE WHATSAPP]</label>
+                <textarea id="textMessage3" rows="6"></textarea>
+            </div>
+
+            <button class="btn-cyber" onclick="passerEcran3()">DONE</button>
+        </div>
+
+        <!-- ÉCRAN 3 : PROTOCOLE D'ENVOI CADENCÉ -->
+        <div id="screen3" class="screen">
+            <div id="statusConsole" style="text-align: center; margin-bottom: 25px; color: #ff0033; font-weight: bold; font-size: 0.9rem;">
+                [!] PROTOCOLE SÉQUENTIEL SÉCURISÉ PRÊT
+            </div>
+            <button id="btnFucked" class="btn-cyber btn-fucked" onclick="executerAttaqueCadencee()">fucked</button>
+        </div>
+    </div>
+
+      <style>
+           body {
+    background-color: #020202;
+    color: #00ff33;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow-y: auto;
+    text-shadow: 0 0 4px rgba(0, 255, 51, 0.6);
+}
+
+body::before {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 10;
+    background-size: 100% 3px, 6px 100%;
+    pointer-events: none;
+}
+
+.matrix-box {
+    border: 2px solid #00ff33;
+    padding: 25px;
+    background: rgba(5, 5, 5, 0.95);
+    box-shadow: 0 0 30px rgba(0, 255, 51, 0.15), inset 0 0 20px rgba(0, 255, 51, 0.1);
+    max-width: 550px;
+    width: 90%;
+    border-radius: 2px;
+    margin: 20px 0;
+    position: relative;
+    animation: systemSlideIn 0.5s cubic-bezier(0.1, 0.8, 0.3, 1);
+}
+
+@keyframes systemSlideIn {
+    0% { transform: translateY(60px) scale(0.95); opacity: 0; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.3rem;
+    letter-spacing: 6px;
+    margin: 0;
+    color: #00ff33;
+}
+
+.glitch-404 {
+    text-align: center;
+    color: #ff0033;
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    text-shadow: 0 0 8px #ff0033;
+}
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    background: #000;
+    border: 1px solid #00ff33;
+    color: #00ff33;
+    font-family: inherit;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 0.9rem;
+    box-shadow: inset 0 0 5px rgba(0, 255, 51, 0.2);
+}
+
+textarea {
+    resize: none;
+    line-height: 1.4;
+}
+
+input:focus, textarea:focus {
+    border-color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 255, 51, 0.4);
+}
+
+.btn-cyber {
+    width: 100%;
+    padding: 15px;
+    background: #00ff33;
+    color: #000;
+    border: none;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 15px rgba(0, 255, 51, 0.3);
+}
+
+.btn-cyber:hover {
+    background: #000;
+    color: #00ff33;
+    border: 1px solid #00ff33;
+    box-shadow: 0 0 25px #00ff33;
+}
+
+.btn-fucked {
+    background: #ff0033;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 0, 51, 0.4);
+    text-shadow: 0 0 5px #fff;
+    text-transform: uppercase;
+}
+
+.btn-fucked:hover {
+    background: #000;
+    color: #ff0033;
+    border: 1px solid #ff0033;
+    box-shadow: 0 0 25px #ff0033;
+        }
+          </style>
+
+    <script src="script.js"></script>
+</body>
+</html>
